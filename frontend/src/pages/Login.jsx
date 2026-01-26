@@ -76,9 +76,9 @@ export default function Login() {
             className="h-20 w-20 rounded-full border-4 border-red-600 shadow-md"
           />
         </div>
-        
+
         <h2 className="text-3xl font-extrabold text-center mb-8 text-gray-900 uppercase tracking-wider">Login</h2>
-        
+
         <form onSubmit={handleLogin} className="space-y-6">
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-500 uppercase ml-1">Email Address</label>
@@ -91,7 +91,7 @@ export default function Login() {
               className="w-full px-4 py-3 bg-white/50 border border-gray-300 rounded-xl focus:outline-none focus:border-red-600 focus:bg-white text-gray-900 placeholder-gray-400 transition-all"
             />
           </div>
-          
+
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-500 uppercase ml-1">Password</label>
             <input
