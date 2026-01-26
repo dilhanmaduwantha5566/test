@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "*", // Allow Vercel frontend
     credentials: true,
   })
 );
@@ -32,10 +32,15 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5002;
 
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("✅ MongoDB Connected");
-    app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
-  })
+  .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB connection failed:", err));
+
+// Start server only if running locally
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+}
+
+module.exports = app;
